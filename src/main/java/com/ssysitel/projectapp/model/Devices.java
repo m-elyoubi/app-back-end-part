@@ -9,31 +9,38 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
-
+@IdClass(DeviceId.class)
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class Devices implements Serializable {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @NotBlank(message = "Device id must not be empty")
+    private Long deviceId;
+    @Id
+    @NotBlank(message = "User id must not be empty")
+    private Long userId;
+    @Id
+    @NotBlank(message = "Account id must not be empty")
+    private String accountId;
     private String module;
     private String typeOfEquipment;
     private String position;
     private int speed;
     private boolean active;
-
     @ManyToOne
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name="user_id",insertable = false,updatable = false)
     private Users users;
     @ManyToOne
-    @JoinColumn(name = "id_accounts")
+    @JoinColumn(name="account_id",insertable = false,updatable = false)
     private Accounts accounts;
-    public Devices(String module, String typeOfEquipment, String position, int speed, Users user, Accounts account,boolean active)
+    public Devices(DeviceId id,String module, String typeOfEquipment, String position, int speed,boolean active)
     {
+        this.deviceId=id.getDeviceId();
+        this.userId=id.getUserId();
+        this.accountId=id.getAccountId();
         this.module=module;
         this.typeOfEquipment=typeOfEquipment;
         this.position=position;
         this.speed=speed;
-        this.users=user;
-        this.accounts=account;
         this.active=active;
     }
 

@@ -4,6 +4,7 @@ import com.ssysitel.projectapp.dao.AccountRepository;
 import com.ssysitel.projectapp.dao.DeviceRepository;
 import com.ssysitel.projectapp.dto.SizeTables;
 import com.ssysitel.projectapp.model.Accounts;
+import com.ssysitel.projectapp.model.DeviceId;
 import com.ssysitel.projectapp.model.Users;
 import com.ssysitel.projectapp.dao.UserRepository;
 import com.ssysitel.projectapp.model.Devices;
@@ -77,26 +78,29 @@ public class ProjectAppApplication implements CommandLineRunner{
 
     // --------------------------      Test for class Vehicles     --------------------------
 
-        Devices vehicle1=new Devices("DACIA","FBM","Market",240,u1,account1,true);
-        Devices vehicle2=new Devices("range-rover","FMA","Market",350,u2,account2,true);
-        Devices vehicle3=new Devices("4x4","BFMA","Market",300,u3,account3,false);
-        Devices vehicle4=new Devices("mercedes benz","FMAB","Park",200,u4,account4,false);
-        Devices vehicle5=new Devices("Volvo S60","FMA","Park",180,u5,account5,true);
-        Devices vehicle6=new Devices("Land Rover","MFA","Park",330,u2,account3,false);
-        Devices vehicle7=new Devices("\n" +
-                "PICKUP TRUCK","MFA","Market",210,u3,account2,true);
-        Devices vehicle8=new Devices(" Honda Ridgeline","MFA","Market",250,u4,account5,true);
-        Devices vehicle9=new Devices("\n" +
-                "MINIVAN","MFA","Park",270,u6,account6,true);
+        Devices vehicle1=new Devices(new DeviceId(1L,1L,"admin"),"DACIA","FBM","Market",240,true);
+        Devices vehicle2=new Devices(new DeviceId(2L,2L,"user"),"range-rover","FMA","Market",350,true);
+        Devices vehicle3=new Devices(new DeviceId(3L,3L,"admin"),"4x4","BFMA","Market",300,false);
+        Devices vehicle4=new Devices(new DeviceId(4L,4L,"admin"),"mercedes benz","FMAB","Park",200,false);
+       /* Devices vehicle5=new Devices(new DeviceId(5L,"user"),"Volvo S60","FMA","Park",180,true);
+        Devices vehicle6=new Devices(new DeviceId(6L,"admin"),"Land Rover","MFA","Park",330,false);
+        Devices vehicle7=new Devices(new DeviceId(7L,"admin"),
+                "PICKUP TRUCK","MFA","Market",210,true);
+        Devices vehicle8=new Devices(new DeviceId(8L,"user")," Honda Ridgeline","MFA","Market",250,true);
+        Devices vehicle9=new Devices(new DeviceId(9L,"admin"),
+                "MINIVAN","MFA","Park",270,true);
+        */
         deviceRepository.save(vehicle1);
         deviceRepository.save(vehicle2);
         deviceRepository.save(vehicle3);
         deviceRepository.save(vehicle4);
-        deviceRepository.save(vehicle5);
+      /*  deviceRepository.save(vehicle5);
        deviceRepository.save(vehicle6);
        deviceRepository.save(vehicle7);
        deviceRepository.save(vehicle8);
        deviceRepository.save(vehicle9);
+
+
 
        System.out.println("Count Account in device "+ deviceRepository.countRepeatAccountInDevice());
        System.out.println("Count Account in device "+ deviceRepository.countRepeatAccountInDevice());
@@ -107,6 +111,9 @@ public class ProjectAppApplication implements CommandLineRunner{
         List<SizeTables> l=deviceService.countUserAccountDevice();
         for(SizeTables lis:l)
             System.out.println(lis);
+            */
+
+
 }
 
 

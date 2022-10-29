@@ -5,6 +5,7 @@ import com.ssysitel.projectapp.dao.DeviceRepository;
 import com.ssysitel.projectapp.dao.UserRepository;
 import com.ssysitel.projectapp.dto.OrderResponse;
 import com.ssysitel.projectapp.dto.SizeTables;
+import com.ssysitel.projectapp.model.DeviceId;
 import com.ssysitel.projectapp.model.Devices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -78,7 +79,7 @@ public class DeviceService {
     }
     public Devices ActiveDevice(Devices device,Long id) throws Exception {
        if (device!=null || !"".equals(id)) {
-           device.setId(id);
+           device.setDeviceId(id);
            devices = deviceRepository.save(device);
            if (device != null)
                return devices;
@@ -127,14 +128,14 @@ public class DeviceService {
             throw new Exception("device is null");
 
     }
-    public boolean delete(Long id) throws Exception {
+    public boolean delete(DeviceId id) throws Exception {
         if (id!=null || !"".equals(id)) {
             deviceRepository.deleteById(id);
             return true;}
         else
             throw new Exception("id device is  null or empty");
         }
-    public Optional<Devices> getDeviceById(Long id) throws Exception {
+    public Optional<Devices> getDeviceById(DeviceId id) throws Exception {
         if (id!=null || !"".equals(id)) {
             if (deviceRepository.findById(id)!=null)
                 return deviceRepository.findById(id);
@@ -146,7 +147,7 @@ public class DeviceService {
     }
     public Devices updateDevice(Devices device ,Long id) throws Exception {
         if (device!=null || !"".equals(id)) {
-            device.setId(id);
+            device.setDeviceId(id);
             devices= deviceRepository.save(device);
             if (devices!=null)
                 return devices;

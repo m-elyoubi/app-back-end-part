@@ -3,6 +3,7 @@ package com.ssysitel.projectapp.dao;
 
 import com.ssysitel.projectapp.dto.OrderResponse;
 import com.ssysitel.projectapp.dto.SizeTables;
+import com.ssysitel.projectapp.model.DeviceId;
 import com.ssysitel.projectapp.model.Devices;
 import com.ssysitel.projectapp.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-public interface DeviceRepository extends JpaRepository<Devices,Long> {
+public interface DeviceRepository extends JpaRepository<Devices, DeviceId> {
 
+    @Query("select d from Devices d where d.id like :id_device")
+    public Long findByIdDevice(@Param("id_device") String id_device);
     @Query("select d from Devices d where d.accounts.id like :id_account")
     public List<Devices> getDeviceByIdAccount(@Param("id_account") String id_account);
     @Query("select d from Devices d where d.users.id in :id_user")

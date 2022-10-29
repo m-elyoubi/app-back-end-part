@@ -1,10 +1,8 @@
 package com.ssysitel.projectapp.controller;
-
-import com.ssysitel.projectapp.dao.DeviceRepository;
 import com.ssysitel.projectapp.dto.OrderResponse;
 import com.ssysitel.projectapp.dto.SizeTables;
+import com.ssysitel.projectapp.model.DeviceId;
 import com.ssysitel.projectapp.model.Devices;
-import com.ssysitel.projectapp.model.Users;
 import com.ssysitel.projectapp.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -50,13 +48,13 @@ public class DeviceController {
     }
 
     @RequestMapping(value = "/devices/{id}",method = RequestMethod.GET)
-    public Optional<Devices> getDeviceById(@PathVariable Long id) throws Exception {
+    public Optional<Devices> getDeviceById(@PathVariable DeviceId id) throws Exception {
 
         return deviceService.getDeviceById(id);
     }
 
     @RequestMapping (value = "/devices/{id}",method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable Long id) throws Exception {
+    public boolean delete(@PathVariable DeviceId id) throws Exception {
       return  deviceService.delete(id);
     }
 
