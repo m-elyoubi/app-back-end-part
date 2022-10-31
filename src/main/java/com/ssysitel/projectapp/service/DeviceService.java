@@ -79,7 +79,7 @@ public class DeviceService {
     }
     public Devices ActiveDevice(Devices device,Long id) throws Exception {
        if (device!=null || !"".equals(id)) {
-           device.setDeviceId(id);
+           device.setDeviceID(id);
            devices = deviceRepository.save(device);
            if (device != null)
                return devices;
@@ -147,7 +147,7 @@ public class DeviceService {
     }
     public Devices updateDevice(Devices device ,Long id) throws Exception {
         if (device!=null || !"".equals(id)) {
-            device.setDeviceId(id);
+            device.setDeviceID(id);
             devices= deviceRepository.save(device);
             if (devices!=null)
                 return devices;

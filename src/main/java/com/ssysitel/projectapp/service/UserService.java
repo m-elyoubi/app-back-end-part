@@ -1,6 +1,7 @@
 package com.ssysitel.projectapp.service;
 
 import com.ssysitel.projectapp.dao.UserRepository;
+import com.ssysitel.projectapp.model.UserID;
 import com.ssysitel.projectapp.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,7 +90,7 @@ public class UserService {
        }
    public Users ActiveUser(Users u,Long id) throws Exception {
        if (u != null || id!=null) {
-           u.setId(id);
+           u.setUserID(id);
            if( userRepository.save(u)==null)
            throw new Exception("can't found this user"+u+" has this id"+id);
 
@@ -98,7 +99,7 @@ public class UserService {
        else
            throw new Exception("user is null or  id is empty");
     }
-   public Optional<Users> getUserById(Long id) throws Exception {
+   public Optional<Users> getUserById(UserID id) throws Exception {
        if (id!=null) {
            if (userRepository.findById(id)!=null)
                return userRepository.findById(id);
@@ -108,7 +109,7 @@ public class UserService {
        else
            throw new Exception("id is empty");
     }
-    public boolean deleteUser(Long id) throws Exception {
+    public boolean deleteUser(UserID id) throws Exception {
 
         if (id!=null){
             userRepository.deleteById(id);
@@ -130,7 +131,7 @@ public class UserService {
     }
    public Users updateUser(Users u,Long id) throws Exception {
        if (u!=null && id!=null) {
-           u.setId(id);
+           u.setUserID(id);
            user= userRepository.save(u);
            if (user==null)
                throw new Exception("can't found this user because null"+id);

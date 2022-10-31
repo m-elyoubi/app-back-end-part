@@ -1,5 +1,6 @@
 package com.ssysitel.projectapp.controller;
 
+import com.ssysitel.projectapp.model.UserID;
 import com.ssysitel.projectapp.model.Users;
 import com.ssysitel.projectapp.dao.UserRepository;
 import com.ssysitel.projectapp.service.UserService;
@@ -55,7 +56,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/{id}",method = RequestMethod.GET)
-    public Optional<Users> getUserById(@PathVariable("id") Long id) throws Exception {
+    public Optional<Users> getUserById(@PathVariable("id") UserID id) throws Exception {
         return userService.getUserById(id);
     }
 
@@ -75,7 +76,7 @@ public class UserController {
     }
 
     @RequestMapping (value = "/users/{id}",method = RequestMethod.DELETE)
-    public boolean deleteUser(@PathVariable Long id) throws Exception {
+    public boolean deleteUser(@PathVariable UserID id) throws Exception {
      return userService.deleteUser(id);
     }
 

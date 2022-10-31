@@ -2,6 +2,8 @@ package com.ssysitel.projectapp.service;
 
 import com.ssysitel.projectapp.dao.AccountRepository;
 import com.ssysitel.projectapp.model.Accounts;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Service
 @Transactional
 public class AccountService {
     @Autowired
-    private AccountRepository accountRepository;
+    AccountRepository accountRepository;
 
-    private List<Accounts> listAcc = null;
-    private Accounts account = null;
+    List<Accounts> listAcc = null;
+    Accounts account = null;
 
     public List<Accounts> getAllAccounts() throws Exception {
 
@@ -31,7 +34,7 @@ public class AccountService {
 
     public Accounts saveAccount(Accounts a) throws Exception {
         if (a != null) {
-            a.setId(UUID.randomUUID().toString());
+            a.setAccountID(UUID.randomUUID().toString());
             account = accountRepository.save(a);
             if (account != null)
                 return account;
@@ -43,7 +46,7 @@ public class AccountService {
 
     public Accounts activeAccount(Accounts account, String id) throws Exception {
         if (account != null && !"".equals(id)) {
-            account.setId(id);
+            account.setAccountID(id);
             account = accountRepository.save(account);
             if (account != null)
                 return account;
@@ -98,7 +101,7 @@ public class AccountService {
     }
     public Accounts updateAccountById(Accounts a, String id) throws Exception {
         if (a != null && !"".equals(id)) {
-            a.setId(id);
+            a.setAccountID(id);
             account = accountRepository.save(a);
             if (account != null)
                 return account;
