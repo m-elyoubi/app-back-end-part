@@ -20,4 +20,10 @@ public class DeviceId implements Serializable {
     @Column(name = "account_id")
     String accountId;
 
+
+
+    public DeviceId(Users u1) {
+        this.userID=u1.getUserID();
+        this.accountId=u1.getAccountID();
+    }
 }

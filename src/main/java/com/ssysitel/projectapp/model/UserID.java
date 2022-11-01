@@ -17,7 +17,4 @@ public class UserID implements Serializable {
     Long userID;
     @Column(name = "accountId")
     String accountID;
-
-
-
 }

@@ -43,69 +43,63 @@ public class ProjectAppApplication implements CommandLineRunner{
     public void run(String... args) throws Exception {
         // --------------------------      Test for class Accounts     --------------------------
 
-       Accounts account1=new Accounts("zouhir","sysadmin","06575849",new Date(2030),new Date(),"1234",true);
-        Accounts account2=new Accounts("user","mouhcin","0745372896",new Date(2026),new Date(),"1234f",false);
-        Accounts account3=new Accounts("admin","farida","0712345670",new Date(2020),new Date(),"1234fr",true);
+       Accounts account1=new Accounts("admin","zouhir","sysadmin","06575849",new Date(2030),new Date(),"1234",true);
+        Accounts account2=new Accounts("user","user","mouhcin","0745372896",new Date(2026),new Date(),"1234f",false);
+        Accounts account3=new Accounts("admin","admin","farida","0712345670",new Date(2020),new Date(),"1234fr",true);
         Accounts account4=new Accounts("admin","ghizlane","0679076323",new Date(2022),new Date(),"1234g",true);
         Accounts account5=new Accounts("ibm","nourdine","0667924608",new Date(2024),new Date(),"1234n",false);
         Accounts account6=new Accounts("admin","admin","0608543423",new Date(2023),new Date(),"1234m",true);
         accountService.saveAccount(account1);
         accountService.saveAccount(account2);
         accountService.saveAccount(account3);
-       /* accountService.saveAccount(account4);
+        accountService.saveAccount(account4);
         accountService.saveAccount(account5);
-        accountService.saveAccount(account6);*/
+        accountService.saveAccount(account6);
 
 
     // --------------------------    Test for class Users       --------------------------
-    Users u1=new Users( 1L,"admin","zouhir","123z","0667-325948","zouhir.elkhalfi@usmba.ac.ma","Zouhir","admin",true);
-    Users u2=new Users(2L,"user","mouhcin","123m","0629-509243","mouhcin.elyoubi@uit.ac.ma","Mouhcin","admin",true);
-    Users u3=new Users(3L,"admin","youssef","youssef","0671-743114","youssef.boujydah@ensao.ac.ma","Youssef","user",true);
-    /* Users u4=new Users(new UserID(4L,"admin"),"radia", "123r","0653-914981","radia.elouardi@usmba.ac.ma","Radia","user",false);
-    Users u5=new Users(new UserID(5L,"admin"),"ziyad", "123z","0723-456789","ziyad.el@gmail.com","Ziyad","user",false);
-    Users u6=new Users(new UserID(6L,"MOUHCIN"),"mouhcin","123e","0629-509243","elyoubimouhcine4@gmail.com","Mouhcin","user",true);
-     */
+    Users u1=new Users( 1L,account1.getAccountID(),"zouhir","123z","0667-325948","zouhir.elkhalfi@usmba.ac.ma","Zouhir","admin",true);
+    Users u2=new Users(2L,account2.getAccountID(),"mouhcin","123m","0629-509243","mouhcin.elyoubi@uit.ac.ma","Mouhcin","admin",true);
+    Users u3=new Users(3L,account3.getAccountID(),"youssef","youssef","0671-743114","youssef.boujydah@ensao.ac.ma","Youssef","user",true);
+     Users u4=new Users(4L,account4.getAccountID(),"radia", "123r","0653-914981","radia.elouardi@usmba.ac.ma","Radia","user",false);
+    Users u5=new Users(5L,account5.getAccountID(),"ziyad", "123z","0723-456789","ziyad.el@gmail.com","Ziyad","user",false);
+    Users u6=new Users(6L,account6.getAccountID(),"mouhcin","123e","0629-509243","elyoubimouhcine4@gmail.com","Mouhcin","user",true);
+
         userRepository.save(u1);
 
         userRepository.save(u2);
         userRepository.save(u3);
-       /* userRepository.save(u4);
+        userRepository.save(u4);
 
 
         userRepository.save(u5);
        userRepository.save(u6);
-        System.out.println("Count users "+userRepository.CountUser());
+       // System.out.println("Count users "+userRepository.CountUser());
 
-           */
+
 
 
     // --------------------------      Test for class Vehicles     --------------------------
-/*
-        Devices vehicle1=new Devices(new DeviceId(1L,1L,"admin"),"DACIA","FBM","Market",240,true);
-        Devices vehicle2=new Devices(new DeviceId(2L,2L,"user"),"range-rover","FMA","Market",350,true);
-        Devices vehicle3=new Devices(new DeviceId(3L,3L,"admin"),"4x4","BFMA","Market",300,false);
-        Devices vehicle4=new Devices(new DeviceId(4L,4L,"admin"),"mercedes benz","FMAB","Park",200,false);
-      */
- /* Devices vehicle5=new Devices(new DeviceId(5L,"user"),"Volvo S60","FMA","Park",180,true);
-        Devices vehicle6=new Devices(new DeviceId(6L,"admin"),"Land Rover","MFA","Park",330,false);
-        Devices vehicle7=new Devices(new DeviceId(7L,"admin"),
-                "PICKUP TRUCK","MFA","Market",210,true);
-        Devices vehicle8=new Devices(new DeviceId(8L,"user")," Honda Ridgeline","MFA","Market",250,true);
-        Devices vehicle9=new Devices(new DeviceId(9L,"admin"),
-                "MINIVAN","MFA","Park",270,true);
+   System.out.println(u1.getAccountID());
+   System.out.println(u1.getUserID());
+        Devices dvc1=new Devices(1L,u1.getUserID(),u1.getAccountID(),"DACIA","FBM","Market",240,true);
+        Devices vehicle2=new Devices(2L,u2.getUserID(),u2.getAccountID(),"range-rover","FMA","Market",350,true);
+        Devices vehicle3=new Devices(3L,u3.getUserID(),u3.getAccountID(),"4x4","BFMA","Market",300,false);
+        Devices vehicle4=new Devices(4L,u4.getUserID(),u4.getAccountID(),"mercedes benz","FMAB","Park",200,false);
 
-        deviceRepository.save(vehicle1);
+        Devices vehicle5=new Devices(5L,u5.getUserID(),u5.getAccountID(),"Volvo S60","FMA","Park",180,true);
+        Devices vehicle6=new Devices(6L,u6.getUserID(),u6.getAccountID(),"Land Rover","MFA","Park",330,false);
+
+        deviceRepository.save(dvc1);
         deviceRepository.save(vehicle2);
         deviceRepository.save(vehicle3);
-        deviceRepository.save(vehicle4);
-      /*  deviceRepository.save(vehicle5);
+       deviceRepository.save(vehicle4);
+       deviceRepository.save(vehicle5);
        deviceRepository.save(vehicle6);
-       deviceRepository.save(vehicle7);
-       deviceRepository.save(vehicle8);
-       deviceRepository.save(vehicle9);
 
 
 
+/*
        System.out.println("Count Account in device "+ deviceRepository.countRepeatAccountInDevice());
        System.out.println("Count Account in device "+ deviceRepository.countRepeatAccountInDevice());
 

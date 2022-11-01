@@ -34,7 +34,7 @@ public class Devices implements Serializable {
     Users users;
 
     @ManyToOne
-    @JoinColumn(name="account_id",insertable = false,updatable = false)
+    @JoinColumn(name="account_id",referencedColumnName = "account_id",insertable = false,updatable = false)
     Accounts accounts;
     public Devices(DeviceId id,String module, String typeOfEquipment, String position, int speed,boolean active)
     {
@@ -48,4 +48,15 @@ public class Devices implements Serializable {
         this.active=active;
     }
 
+    public Devices(long l, Long userID, String accountID, String module, String typeOfEquipment, String position, int speed, boolean active) {
+     this.deviceID=l;
+     this.userID=userID;
+     this.accountId=accountID;
+     this.module=module;
+     this.typeOfEquipment=typeOfEquipment;
+     this.position=position;
+     this.speed=speed;
+     this.active=active;
+
+    }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 public class Accounts implements Serializable {
      @Id
      @Column(name = "account_id")
+     @NotBlank(message = "Account id must not be empty")
      String accountID;
     @Column(length = 50)
     String name;
