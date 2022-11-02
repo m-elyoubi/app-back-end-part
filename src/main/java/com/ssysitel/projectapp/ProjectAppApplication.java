@@ -58,22 +58,28 @@ public class ProjectAppApplication implements CommandLineRunner{
 
 
     // --------------------------    Test for class Users       --------------------------
-    Users u1=new Users( 1L,account1.getAccountID(),"zouhir","123z","0667-325948","zouhir.elkhalfi@usmba.ac.ma","Zouhir","admin",true);
-    Users u2=new Users(2L,account2.getAccountID(),"mouhcin","123m","0629-509243","mouhcin.elyoubi@uit.ac.ma","Mouhcin","admin",true);
-    Users u3=new Users(3L,account3.getAccountID(),"youssef","youssef","0671-743114","youssef.boujydah@ensao.ac.ma","Youssef","user",true);
-     Users u4=new Users(4L,account4.getAccountID(),"radia", "123r","0653-914981","radia.elouardi@usmba.ac.ma","Radia","user",false);
-    Users u5=new Users(5L,account5.getAccountID(),"ziyad", "123z","0723-456789","ziyad.el@gmail.com","Ziyad","user",false);
-    Users u6=new Users(6L,account6.getAccountID(),"mouhcin","123e","0629-509243","elyoubimouhcine4@gmail.com","Mouhcin","user",true);
+    Users u1=new Users(1,account1.getAccountID(),"zouhir","123z","0667-325948","zouhir.elkhalfi@usmba.ac.ma","Zouhir","admin",true);
+    Users u2=new Users(2,account2.getAccountID(),"mouhcin","123m","0629-509243","mouhcin.elyoubi@uit.ac.ma","Mouhcin","admin",true);
+    Users u3=new Users(3,account3.getAccountID(),"youssef","youssef","0671-743114","youssef.boujydah@ensao.ac.ma","Youssef","user",true);
+     Users u4=new Users(4,account4.getAccountID(),"radia", "123r","0653-914981","radia.elouardi@usmba.ac.ma","Radia","user",false);
+    Users u5=new Users(5,account5.getAccountID(),"ziyad", "123z","0723-456789","ziyad.el@gmail.com","Ziyad","user",false);
+    Users u6=new Users(6,account6.getAccountID(),"mouhcin","123e","0629-509243","elyoubimouhcine4@gmail.com","Mouhcin","user",true);
+    Users u7=new Users(7,account6.getAccountID(),"hassan","123h","0629-599240","hassan@gmail.com","Mouhcin","user",true);
+    Users u8=new Users(8,account5.getAccountID(),"mouhamed","123m","0629-899240","hassan@gmail.com","Mouhcin","user",true);
+
+
 
         userRepository.save(u1);
 
-        userRepository.save(u2);
+    /*    userRepository.save(u2);
         userRepository.save(u3);
         userRepository.save(u4);
 
 
         userRepository.save(u5);
        userRepository.save(u6);
+       userRepository.save(u7);
+       userRepository.save(u8);
        // System.out.println("Count users "+userRepository.CountUser());
 
 
@@ -88,7 +94,7 @@ public class ProjectAppApplication implements CommandLineRunner{
         Devices vehicle4=new Devices(4L,u4.getUserID(),u4.getAccountID(),"mercedes benz","FMAB","Park",200,false);
 
         Devices vehicle5=new Devices(5L,u5.getUserID(),u5.getAccountID(),"Volvo S60","FMA","Park",180,true);
-        Devices vehicle6=new Devices(6L,u6.getUserID(),u6.getAccountID(),"Land Rover","MFA","Park",330,false);
+        Devices vehicle6=new Devices(6L,u7.getUserID(),u6.getAccountID(),"Land Rover","MFA","Park",330,false);
 
         deviceRepository.save(dvc1);
         deviceRepository.save(vehicle2);

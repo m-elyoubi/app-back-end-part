@@ -16,7 +16,7 @@ public class Devices implements Serializable {
     Long deviceID;
     @Id
     @NotBlank(message = "User id must not be empty")
-    Long userID;
+    Integer userID;
     @Id
     @NotBlank(message = "Account id must not be empty")
     String accountId;
@@ -48,7 +48,7 @@ public class Devices implements Serializable {
         this.active=active;
     }
 
-    public Devices(long l, Long userID, String accountID, String module, String typeOfEquipment, String position, int speed, boolean active) {
+    public Devices(long l, Integer userID, String accountID, String module, String typeOfEquipment, String position, int speed, boolean active) {
      this.deviceID=l;
      this.userID=userID;
      this.accountId=accountID;

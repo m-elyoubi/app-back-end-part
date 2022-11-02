@@ -81,13 +81,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/products/{id}",method = RequestMethod.PUT)
-    public Users activeUser(@RequestBody Users u,@PathVariable Long id) throws Exception {
+    public Users activeUser(@RequestBody Users u,@PathVariable Integer id) throws Exception {
 
         return this.userService.ActiveUser(u,id);
     }
 
     @RequestMapping(value = "/users/{id}",method = RequestMethod.PUT)
-    public Users updateUser(@RequestBody Users u,@PathVariable Long id) throws Exception {
+    public Users updateUser(@RequestBody Users u,@PathVariable Integer id) throws Exception {
         return this.userService.updateUser(u,id);
     }
 

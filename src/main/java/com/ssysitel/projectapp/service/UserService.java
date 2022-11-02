@@ -88,7 +88,7 @@ public class UserService {
         else
             throw new Exception("user has email empty or null");
        }
-   public Users ActiveUser(Users u,Long id) throws Exception {
+   public Users ActiveUser(Users u,Integer id) throws Exception {
        if (u != null || id!=null) {
            u.setUserID(id);
            if( userRepository.save(u)==null)
@@ -129,7 +129,7 @@ public class UserService {
         } else
              throw new Exception("can't get this user has "+id_account);
     }
-   public Users updateUser(Users u,Long id) throws Exception {
+   public Users updateUser(Users u,Integer id) throws Exception {
        if (u!=null && id!=null) {
            u.setUserID(id);
            user= userRepository.save(u);

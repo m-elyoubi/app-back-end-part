@@ -10,14 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @FieldDefaults(makeFinal=false, level= AccessLevel.PRIVATE)
+
 @Entity
 @Data
+
 @AllArgsConstructor @NoArgsConstructor @ToString
 @IdClass(UserID.class)
+
+//@SequenceGenerator(name="OPTION_VALUE", sequenceName="OPTION_VALUE_GENERATOR")
 public class Users implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="OPTION_VALUE")
     @NotBlank(message = "User id must not be empty")
-    Long userID;
+    Integer userID;
     @Id
     @NotBlank(message = "Account id must not be empty")
     String accountID ;
@@ -40,8 +46,7 @@ public class Users implements Serializable {
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     @JsonIgnore
     List<Devices> devices=new ArrayList<>();
-    public Users(Long userID,String accountID,String name, String pw,String phone,String email,String ContactName,String role,boolean active) {
-       this.userID=userID;
+    public Users(String accountID,String name, String pw,String phone,String email,String ContactName,String role,boolean active) {
        this.accountID=accountID;
         this.username = name;
         this.password = pw;
@@ -52,6 +57,20 @@ public class Users implements Serializable {
         this.role=role;
 
     }
+    public Users(Integer id,String accountID,String name, String pw,String phone,String email,String ContactName,String role,boolean active) {
+        this.userID=id;
+        this.accountID=accountID;
+        this.username = name;
+        this.password = pw;
+        this.numberOfPhone=phone;
+        this.email=email;
+        this.ContactName=ContactName;
+        this.active=active;
+        this.role=role;
+
+    }
+
+
 
 
 

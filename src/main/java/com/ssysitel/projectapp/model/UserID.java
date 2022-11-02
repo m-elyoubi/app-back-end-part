@@ -13,8 +13,9 @@ import java.io.Serializable;
 @Data
 public class UserID implements Serializable {
 
+
     @Column(name = "userId")
-    Long userID;
+    Integer userID;
     @Column(name = "accountId")
     String accountID;
 }
